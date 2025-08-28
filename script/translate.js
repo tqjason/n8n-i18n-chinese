@@ -150,6 +150,8 @@ async function run(){
         let fileName = `../languages/${targetLanguage.name}.json`;
         if (fs.existsSync(fileName)){
             targetLanguages = JSON.parse(fs.readFileSync(fileName, "utf8"))
+        }else{
+            console.warn(targetLanguage + "语言文件不存在，创建新文件: ", fileName);
         }
         const waitTranslateList = []
 
