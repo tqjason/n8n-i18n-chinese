@@ -54,6 +54,7 @@ jobs:
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
 
     - name: translate new
+      if: steps.check_tag.outputs.exists == 'false'
       run: pnpm install && node translate.js
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese/script
       env:
@@ -63,6 +64,7 @@ jobs:
         OPENAI_API_CONCURRENT: ${{ vars.OPENAI_API_CONCURRENT }}
 
     - name: translate publish
+      if: steps.check_tag.outputs.exists == 'false'
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
