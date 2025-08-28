@@ -92,7 +92,7 @@ async function translate(waitTranslateList, targetObject, targetLanguage) {
         let item = waitTranslateList[i];
 
         promises.push(doTranslate(item.message, targetLanguage).then(mesasge => {
-            console.log("翻译 key", item.key, "为", targetLanguage, ":", mesasge);
+            console.log("翻译 key", item.key, "为", targetLanguage, ":", item.message , ' => ', mesasge);
             putObjectValue(targetObject, item.key, mesasge)
         }).catch(e => {
             console.log("翻译失败", item.key, ":", e);

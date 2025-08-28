@@ -15,12 +15,17 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
-    - name: Get latest GitHub release version
+    - name: Get latest N8N release version
       id: latest_release
       run: |
         LATEST_VERSION=$(curl -s https://api.github.com/repos/n8n-io/n8n/releases/latest | jq -r '.tag_name')
         echo "Latest release tag: $LATEST_VERSION"
         echo "latest=$LATEST_VERSION" >> $GITHUB_OUTPUT
+
+    - name: Setup corepack and pnpm
+      run: |
+        npm i -g corepack@0.31
+        corepack enable
 
     - name: Checkout local
       uses: actions/checkout@v4
@@ -47,6 +52,19 @@ jobs:
         fi
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
 
+    - name: translate new
+      run: pnpm install && node script/translate.js
+      working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
+
+    - name: translate publish
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add languages/*
+        git add script/en.json
+        git commit -m "chore: auto translate" 
+        git push origin
+
     - name: Exit if tags exist
       if: steps.check_tag.outputs.exists == 'true'
       run: |
@@ -64,12 +82,6 @@ jobs:
       if: steps.check_tag.outputs.exists == 'false'
       with:
         node-version: 20.x
-
-    - name: Setup corepack and pnpm
-      if: steps.check_tag.outputs.exists == 'false'
-      run: |
-        npm i -g corepack@0.31
-        corepack enable
 
     - run: pnpm install --frozen-lockfile
       if: steps.check_tag.outputs.exists == 'false'
