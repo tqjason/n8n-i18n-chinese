@@ -6,6 +6,10 @@ if (!process.env.OPENAI_API_KEY){
     console.error("请设置环境变量 OPENAI_API_KEY");
     process.exit(1);
 }
+if (!process.env.OPENAI_API_BASE){
+    console.error("请设置环境变量 OPENAI_API_BASE");
+    process.exit(1);
+}
 
 const targetLanguages = [
     {

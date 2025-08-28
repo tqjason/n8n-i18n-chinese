@@ -58,6 +58,9 @@ jobs:
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        OPENAI_API_BASE: ${{ vars.OPENAI_API_BASE }}
+        OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        OPENAI_API_CONCURRENT: ${{ vars.OPENAI_API_CONCURRENT }}
 
     - name: translate publish
       run: |
