@@ -53,7 +53,12 @@ jobs:
         fi
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
 
-    - name: translate new
+    - name: Exit if tags exist
+      if: steps.check_tag.outputs.exists == 'true'
+      run: |
+        echo "Tags exist, stopping workflow."
+
+    - name: Translate New Strings
       if: steps.check_tag.outputs.exists == 'false'
       run: pnpm install && node translate.js
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese/script
@@ -63,7 +68,7 @@ jobs:
         OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
         OPENAI_API_CONCURRENT: ${{ vars.OPENAI_API_CONCURRENT }}
 
-    - name: translate publish
+    - name: Translate Publish Git
       if: steps.check_tag.outputs.exists == 'false'
       run: |
         git config --global user.name "github-actions"
@@ -79,11 +84,6 @@ jobs:
           git push origin
         fi
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
-
-    - name: Exit if tags exist
-      if: steps.check_tag.outputs.exists == 'true'
-      run: |
-        echo "Tags exist, stopping workflow."
 
     - name: Checkout n8n
       if: steps.check_tag.outputs.exists == 'false'
