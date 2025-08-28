@@ -70,6 +70,7 @@ jobs:
         git add script/en.json
         git commit -m "chore: auto translate" 
         git push origin
+      working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
 
     - name: Exit if tags exist
       if: steps.check_tag.outputs.exists == 'true'
