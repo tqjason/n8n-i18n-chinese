@@ -66,10 +66,16 @@ jobs:
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
-        git add languages/*
-        git add script/en.json
-        git commit -m "chore: auto translate" 
-        git push origin
+        
+        git add languages/* script/en.json || true
+        
+        # 如果没有变更就跳过
+        if git diff --cached --quiet; then
+          echo "No changes to commit."
+        else
+          git commit -m "chore: auto translate"
+          git push origin
+        fi
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese
 
     - name: Exit if tags exist
