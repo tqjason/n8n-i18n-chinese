@@ -3000,6 +3000,7 @@
     "settings.sso.settings.save.activate.cancel": "取消",
     "settings.sso.settings.save.activate.test": "测试设置",
     "settings.sso.settings.save.error": "保存 SAML SSO 配置时出错",
+    "settings.sso.settings.save.error_oidc": "保存 OIDC SSO 配置时出错",
     "settings.sso.settings.footer.hint": "保存设置后，请不要忘记激活 SAML SSO。",
     "settings.sso.actionBox.title": "在企业版计划中可用",
     "settings.sso.actionBox.description": "使用单点登录将身份验证整合到单个平台中，以提高安全性和敏捷性。",
