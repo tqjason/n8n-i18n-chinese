@@ -1198,6 +1198,7 @@
     "ndv.output.branch": "分支",
     "ndv.output.executing": "正在执行节点...",
     "ndv.output.items": "{count} 个项目 | {count} 个项目",
+    "ndv.output.itemsTotal": "{count} 项总计 | {count} 项目总计",
     "ndv.output.andSubExecutions": "，{count} 个子执行 | ，{count} 个子执行",
     "ndv.output.noOutputData.message": "当节点没有输出数据时，n8n 会停止执行工作流。您可以通过以下方式更改此默认行为：",
     "ndv.output.noOutputData.message.settings": "设置",
