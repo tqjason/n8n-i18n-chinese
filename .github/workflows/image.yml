@@ -36,8 +36,8 @@ jobs:
         run: |
           docker build \
             --build-arg VERSION=$RELEASE_VERSION \
-            -t blowsnow/n8n-chinese:$RELEASE_VERSION
-            -t blowsnow/n8n-chinese:latest\
+            -t blowsnow/n8n-chinese:$RELEASE_VERSION \
+            -t blowsnow/n8n-chinese:latest \
             .
 
           docker push blowsnow/n8n-chinese:$RELEASE_VERSION
