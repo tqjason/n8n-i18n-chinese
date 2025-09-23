@@ -125,14 +125,17 @@ jobs:
       run: git apply /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese/patches/fix_editor-ui.patch
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n
 
-    - name: Patch I18n zhCn
-      if: steps.editorui_dir.outputs.flag == 'new' && steps.check_tag.outputs.exists == 'false'
-      run: git apply /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese/patches/feat__i18n_zhCn.patch
-      working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n
-
     - name: Patch Old editor-ui
       if: steps.editorui_dir.outputs.flag == 'old' && steps.check_tag.outputs.exists == 'false'
       run: git apply /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese/patches/fix_editor-ui.old.patch
+      working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n
+
+    - name: Patch I18n zhCn
+      if: steps.editorui_dir.outputs.flag == 'new' && steps.check_tag.outputs.exists == 'false'
+      run: |
+        git apply /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n-i18n-chinese/patches/feat__i18n_zhCn.patch
+        echo "==== /packages/frontend/@n8n/i18n/src/index.ts 内容 ===="
+        head -n 30 /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n/packages/frontend/@n8n/i18n/src/index.ts
       working-directory: /home/runner/work/n8n-i18n-chinese/n8n-i18n-chinese/n8n
 
     - name: Pnpm build editor-ui
