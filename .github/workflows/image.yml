@@ -40,5 +40,4 @@ jobs:
             .
 
           docker push blowsnow/n8n-chinese:${{ RELEASE_VERSION }}
-        env:
 
