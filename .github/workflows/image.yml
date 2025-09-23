@@ -35,9 +35,9 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build \
-            --build-arg VERSION=${{ RELEASE_VERSION }} \
-            -t blowsnow/n8n-chinese:${{ RELEASE_VERSION }} \
+            --build-arg VERSION=$RELEASE_VERSION \
+            -t blowsnow/n8n-chinese:$RELEASE_VERSION \
             .
 
-          docker push blowsnow/n8n-chinese:${{ RELEASE_VERSION }}
+          docker push blowsnow/n8n-chinese:$RELEASE_VERSION
 
