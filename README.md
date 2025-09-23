@@ -1,5 +1,15 @@
 
 # 安装教程
+
+## 自带中文docker镜像
+```shell
+docker run -it --rm --name n8ntest \
+-p 15678:5678 \
+-v ~/.n8n:/home/node/.n8n \
+-e N8N_SECURE_COOKIE=false \
+blowsnow/n8n-chinese
+```
+
 ## docker安装
 > 其他命令参考n8n官方文档
 ```shell
@@ -12,17 +22,6 @@ docker run -it --rm --name n8ntest \
 n8nio/n8n
 ```
 
-## docker-compose安装
-> 请切换到对应版本的tag后，在执行
-```shell
-# 拉取代码
-git clone https://github.com/other-blowsnow/n8n-i18n-chinese
-cd n8n-i18n-chinese
-# 只支持 1.86.1+以上使用该方法
-git checkout n8n@1.86.1
-# 运行
-docker-compose up
-``` 
 
 ## npx本地启动n8n替换安装
 > 其他本地方式启动的话参考这个即可
