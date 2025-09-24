@@ -1061,7 +1061,7 @@
     "readOnlyEnv.cantAdd.any": "您无法在受保护的 n8n 实例上创建新的工作流或凭证",
     "readOnlyEnv.cantEditOrRun": "此工作流无法编辑或手动运行，因为它位于受保护的实例上",
     "logs.overview.header.title": "日志",
-    "logs.overview.header.actions.clearExecution": "明确执行",
+    "logs.overview.header.actions.clearExecution": "清除执行",
     "logs.overview.header.actions.clearExecution.tooltip": "清除执行数据",
     "logs.overview.header.switch.details": "详情",
     "logs.overview.header.switch.overview": "概览",
